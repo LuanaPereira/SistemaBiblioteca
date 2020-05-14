@@ -1,10 +1,10 @@
 Luana1;Bruno;1
-Luana2;Bruno;1
 Luana4;Bruno;1
 Luana5;Bruno;1
 Luana6;Bruno;1
 Luana7;Bruno;1
-Luana8;Bruno;1
+BrunoTeamo;Bruno1;1996
 Bruno;Luana;1
-Isa1;Luan;3
-Luana
+Isa1;Luana;3
+Luana;Bruno;3
+Bruno;Luana;1997

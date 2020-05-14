@@ -61,7 +61,6 @@ public class Gerencia {
         System.out.println("Livro Adicionado!");
         arquivo.close();
     }
-    
     public void editar() throws FileNotFoundException, IOException{
         ArrayList<Livro> livro = new ArrayList<>();
         BufferedReader leitura = new BufferedReader(new FileReader("C:\\Users\\luhpe\\Documents\\NetBeansProjects\\SistemaBiblioteca\\src\\sistemabiblioteca\\livro.txt"));
@@ -76,7 +75,7 @@ public class Gerencia {
         }
         leitura.close();
         
-        System.out.println("Qual nome livro deseja editar?");
+        System.out.println("Qual nome do livro que deseja editar?");
         Scanner entrada = new Scanner(System.in);
         String livroEditar = entrada.next();
         for (int i =0; i<livro.size(); i++){
@@ -86,9 +85,11 @@ public class Gerencia {
                 System.out.println("Digite 2 para Autor");
                 System.out.println("Digite 3 para Ano");
                 Scanner opcao = new Scanner(System.in);
+                int op = opcao.nextInt();
+                System.out.println("Digite a nova informacao!");
                 Scanner editar = new Scanner(System.in);
-                String edicao = entrada.next();
-                int op = opcao.nextInt();  
+                String edicao = editar.next();
+                  
                 switch (op) {  
                     case 1 : livro.get(i).nome = edicao;
                     break;   
@@ -162,7 +163,7 @@ public class Gerencia {
     }
     public void buscarNome() throws FileNotFoundException, IOException{
         boolean controle = false;
-        System.out.println("Qual nome do livro deseja buscar?");
+        System.out.println("Qual nome do livro que deseja buscar?");
         Scanner entrada = new Scanner(System.in);
         String nomeBusca = entrada.next();
         BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\luhpe\\Documents\\NetBeansProjects\\SistemaBiblioteca\\src\\sistemabiblioteca\\livro.txt"));
@@ -187,7 +188,7 @@ public class Gerencia {
     }
     public void buscarAutor() throws FileNotFoundException, IOException{
         boolean controle = false;
-        System.out.println("Qual autor do livro deseja buscar?");
+        System.out.println("Qual autor do livro que deseja buscar?");
         Scanner entrada = new Scanner(System.in);
         String autorBusca = entrada.next();
         BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\luhpe\\Documents\\NetBeansProjects\\SistemaBiblioteca\\src\\sistemabiblioteca\\livro.txt"));
@@ -212,9 +213,9 @@ public class Gerencia {
     }
     public void buscarAno() throws FileNotFoundException, IOException{
         boolean controle = false;
-        System.out.println("Qual ano do livro deseja buscar?");
+        System.out.println("Qual ano do livro que deseja buscar?");
         Scanner entrada = new Scanner(System.in);
-        String anoBusca = entrada.next();
+        int anoBusca = entrada.nextInt();
         BufferedReader arquivo = new BufferedReader(new FileReader("C:\\Users\\luhpe\\Documents\\NetBeansProjects\\SistemaBiblioteca\\src\\sistemabiblioteca\\livro.txt"));
         while (arquivo.ready()) {
             String linha = arquivo.readLine();
@@ -223,7 +224,7 @@ public class Gerencia {
             aux.nome = divisao[0];
             aux.autor = divisao[1];
             aux.ano = Integer.parseInt(divisao[2]);
-            if (anoBusca.trim().equals(aux.ano)){
+            if (anoBusca == aux.ano){
                 System.out.println("Nome : " + aux.nome + " Autor: " + aux.autor + " Ano: " + aux.ano);
                 controle = true;
             }
@@ -249,11 +250,3 @@ public class Gerencia {
         arquivo.close();
     }
 }
-
-//Toda vez que executar o projeto, você tem que abrir o documento de texto e carregar os livros salvos no txt, e toda vez que fechar o projeto você tem que salvar as alterações no documento de texto. 
-//Uma dica pra ajudar na hora de fechar o projeto e salvar tudo, você pode excluir o arquivo de texto existente e criar um novo pra salvar todos os livros de novo.
-
-//Para salvar um livro, pode salvar um um .txt da seguinte maneira:
-//- Salvar um livro por linha
-//- Separando as informações por ;
-//- Exemplo: LivroA;AutorB;2019;
